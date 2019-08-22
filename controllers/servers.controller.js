@@ -9,7 +9,6 @@ module.exports = {
         client.on('loggedOn', async (details) => {
             client.getServerList('\\appid\\33930', 5000, (err, servers) => {
                 for(let server of servers){
-                    console.log(server);
                     const { addr: address, name, players: currentPlayers, max_players: maxPlayers, gameport: gamePort} = server;
                     const ip = address.substr(0, address.indexOf(':'));
                     const queryPort = address.slice(address.lastIndexOf(':') + 1);
@@ -27,7 +26,7 @@ module.exports = {
             return res.status(400).send({error: "No IP was provided in the server object"});
         }
         if (!port) { 
-            return res.status(400).send({error: "No port was provided in the server object"});
+            return res.status(400).send({error: "No query port was provided in the server object"});
         }
         const queryPort = parseInt(port);
         const state = await Gamedig.query({
