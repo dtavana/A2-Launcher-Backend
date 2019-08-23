@@ -21,7 +21,7 @@ module.exports = {
         });
     },
     getServerInfo: async(req, res) => {
-        const { ip, queryPort: port } = req.body;
+        const { ip, queryPort: port } = req.query;
         if (!ip) {
             return res.status(400).send({error: "No IP was provided in the server object"});
         }
