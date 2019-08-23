@@ -13,7 +13,7 @@ module.exports = {
                     const ip = address.substr(0, address.indexOf(':'));
                     const queryPort = address.slice(address.lastIndexOf(':') + 1);
                     const currentServer = { ip, gamePort, queryPort, name, currentPlayers, maxPlayers };
-                    name.includes("KFC") ? serverList.unshift(currentServer) : serverList.push(currentServer);
+                    serverList.push(currentServer);
                 };
                 client.logOff();
                 res.status(200).send({data: serverList});
